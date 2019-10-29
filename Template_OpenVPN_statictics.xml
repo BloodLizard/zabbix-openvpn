@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2019-10-29T06:50:54Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template OpenVPN statistics</template>
+            <name>Template OpenVPN statistics</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>openvpn</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Openvpn connections</name>
+                    <key>openvpn.connections</key>
+                    <applications>
+                        <application>
+                            <name>openvpn</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Client discovery</name>
+                    <key>openvpn.discovery</key>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Client $1 bytes received</name>
+                            <key>openvpn.bytesreceive[{#CLIENTNAME}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>kb</units>
+                            <applications>
+                                <application>
+                                    <name>openvpn</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Client $1 bytes sent</name>
+                            <key>openvpn.bytessent[{#CLIENTNAME}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>kb</units>
+                            <applications>
+                                <application>
+                                    <name>openvpn</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Client $1 external ip</name>
+                            <key>openvpn.externalip[{#CLIENTNAME}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <applications>
+                                <application>
+                                    <name>openvpn</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Client $1 internal ip</name>
+                            <key>openvpn.internalip[{#CLIENTNAME}]</key>
+                            <trends>0</trends>
+                            <value_type>CHAR</value_type>
+                            <applications>
+                                <application>
+                                    <name>openvpn</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Client $1 connected at</name>
+                            <key>openvpn.timeconnected[{#CLIENTNAME}]</key>
+                            <units>unixtime</units>
+                            <applications>
+                                <application>
+                                    <name>openvpn</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+</zabbix_export>
